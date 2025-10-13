@@ -3,7 +3,8 @@ import re
 
 def normalize_phone(phone_number: str) -> str:
     """
-    Normalizes a phone number to the standard international format for Ukraine.
+    Normalizes a phone number to the standard international format for Ukraine. For other countries,
+    it returns the cleaned number without formatting.
     """
     cleaned = re.sub(r"[^\d+]", "", phone_number.strip())
 
@@ -14,4 +15,4 @@ def normalize_phone(phone_number: str) -> str:
     elif cleaned.startswith("0"):
         return "+38" + cleaned
     else:
-        raise ValueError("Invalid phone number format")
+        return cleaned
